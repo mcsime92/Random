@@ -17,11 +17,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     Button saveButton, rollButton, throwButton;
-    TextView rollResult, throwResult;
+    TextView nameResult, rollResult, throwResult;
     EditText editText;
     ImageView coinImage;
     Switch switchButton;
@@ -44,12 +45,30 @@ public class MainActivity extends AppCompatActivity {
 
         throwResult = (TextView) findViewById(R.id.throwResult);
         rollResult = (TextView) findViewById(R.id.rollResult);
+        nameResult = (TextView) findViewById(R.id.nameResult);
         editText = (EditText) findViewById(R.id.editText);
 
         coinImage = (ImageView) findViewById(R.id.coinImage);
         linearLayout = (LinearLayout) findViewById(R.id.main_activity_layout);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = editText.getText().toString();
+
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                editor.putString(Name, name);
+
+                editor.commit();
+
+                nameResult.setText(name);
+
+                Toast.makeText(MainActivity.this,"Thanks", Toast.LENGTH_LONG).show();
+            }
+        });
 
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,19 +83,6 @@ public class MainActivity extends AppCompatActivity {
                 throwCoin(v);
             }
 
-        });
-
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String name = editText.getText().toString();
-
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-
-                editor.putString(Name, name);
-                //apply() seems better than commit()
-                editor.apply();
-            }
         });
 
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

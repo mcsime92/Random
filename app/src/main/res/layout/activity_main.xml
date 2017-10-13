@@ -7,6 +7,14 @@
     android:orientation="vertical"
     tools:context="com.example.max.random.MainActivity">
 
+    <TextView
+        android:id="@+id/nameResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
@@ -21,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/dice_button" />
+        android:text="@string/save_button" />
 
     <Button
         android:id="@+id/diceButton"
