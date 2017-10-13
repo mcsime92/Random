@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Random</string>
+    <string name="user_name">Tell us your name!</string>
+    <string name="dice_button">Roll the dice</string>
+    <string name="throw_the_coin">Throw the coin</string>
+    <string name="turn_on_dark_theme">Turn on dark theme</string>
 </resources>

@@ -1,5 +1,7 @@
 package com.example.max.random;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
@@ -9,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 import android.widget.LinearLayout;
@@ -17,34 +20,43 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button rollButton, throwButton;
+    Button saveButton, rollButton, throwButton;
     TextView rollResult, throwResult;
-
+    EditText editText;
     ImageView coinImage;
-
     Switch switchButton;
-
     LinearLayout linearLayout;
+
+    public static final String MyPREFERENCES = "MyPreferences" ;
+    public static final String Name = "nameKey";
+
+    SharedPreferences sharedpreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        saveButton = (Button) findViewById(R.id.saveButton);
         rollButton = (Button) findViewById(R.id.diceButton);
+        throwButton = (Button) findViewById(R.id.throwButton);
+        switchButton = (Switch) findViewById(R.id.switch1);
+
+        throwResult = (TextView) findViewById(R.id.throwResult);
         rollResult = (TextView) findViewById(R.id.rollResult);
+        editText = (EditText) findViewById(R.id.editText);
+
+        coinImage = (ImageView) findViewById(R.id.coinImage);
+        linearLayout = (LinearLayout) findViewById(R.id.main_activity_layout);
+
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 rollDice(v);
-
             }
         });
-
-        throwButton = (Button) findViewById(R.id.throwButton);
-        throwResult = (TextView) findViewById(R.id.throwResult);
-        coinImage = (ImageView) findViewById(R.id.coinImage);
 
         throwButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,11 +66,18 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        linearLayout = (LinearLayout) findViewById(R.id.main_activity_layout);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = editText.getText().toString();
 
-        //initiate and set current state
-        switchButton = (Switch) findViewById(R.id.switch1);
-        //switchButton.setChecked(true);
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+
+                editor.putString(Name, name);
+                //apply() seems better than commit()
+                editor.apply();
+            }
+        });
 
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

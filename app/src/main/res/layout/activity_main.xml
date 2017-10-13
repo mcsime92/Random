@@ -4,16 +4,31 @@
     android:id="@+id/main_activity_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.max.random.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="com.example.max.random.MainActivity">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        android:hint="@string/user_name" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/dice_button" />
 
     <Button
         android:id="@+id/diceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Roll the dice"
         android:layout_gravity="center_horizontal"
-        />
+        android:text="@string/dice_button" />
 
     <TextView
         android:id="@+id/rollResult"
@@ -24,13 +39,12 @@
         android:textStyle="bold" />
 
     <Button
-        android:layout_marginTop="10dp"
         android:id="@+id/throwButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Throw the coin"
         android:layout_gravity="center_horizontal"
-        />
+        android:layout_marginTop="10dp"
+        android:text="@string/throw_the_coin" />
 
     <TextView
         android:id="@+id/throwResult"
@@ -44,14 +58,14 @@
         android:id="@+id/coinImage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp" />
 
     <Switch
         android:id="@+id/switch1"
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
-        android:text="Turn on dark theme" />
+        android:layout_gravity="center_horizontal"
+        android:text="@string/turn_on_dark_theme" />
 
 </LinearLayout>
