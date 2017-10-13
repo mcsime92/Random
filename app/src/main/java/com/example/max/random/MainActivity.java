@@ -1,5 +1,6 @@
 package com.example.max.random;
 
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -7,16 +8,21 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 
 import android.widget.LinearLayout;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button rollButton, throwButton;
     TextView rollResult, throwResult;
+
     ImageView coinImage;
+
+    Switch switchButton;
 
     LinearLayout linearLayout;
 
@@ -50,6 +56,22 @@ public class MainActivity extends AppCompatActivity {
 
         linearLayout = (LinearLayout) findViewById(R.id.main_activity_layout);
 
+        //initiate and set current state
+        switchButton = (Switch) findViewById(R.id.switch1);
+        //switchButton.setChecked(true);
+
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if (isChecked) {
+                    linearLayout.setBackgroundColor(Color.RED);
+
+                } else {
+                    linearLayout.setBackgroundColor(Color.BLUE);
+                }
+            }
+
+        });
     }
 
     //TODO: 1. add a timer to put space between function calls.
