@@ -15,21 +15,12 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="30dp"
-        android:hint="@string/user_name" />
-
     <Button
-        android:id="@+id/saveButton"
+        android:id="@+id/preferenceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="@string/save_button" />
+        android:text="@string/preference_button" />
 
     <Button
         android:id="@+id/diceButton"
@@ -75,5 +66,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:text="@string/turn_on_dark_theme" />
+
+    <Button
+        android:id="@+id/showUserNameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/show_username" />
 
 </LinearLayout>

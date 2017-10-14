@@ -1,9 +1,11 @@
 package com.example.max.random;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,15 +23,14 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button saveButton, rollButton, throwButton;
+    Button preferenceButton, rollButton, throwButton, showUserName;
     TextView nameResult, rollResult, throwResult;
     EditText editText;
     ImageView coinImage;
     Switch switchButton;
     LinearLayout linearLayout;
 
-    public static final String MyPREFERENCES = "MyPreferences" ;
-    public static final String Name = "nameKey";
+    public static final String MyPREFERENCES = "MyPreferences";
 
     SharedPreferences sharedpreferences;
 
@@ -38,37 +39,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        saveButton = (Button) findViewById(R.id.saveButton);
+        preferenceButton = (Button) findViewById(R.id.preferenceButton);
         rollButton = (Button) findViewById(R.id.diceButton);
         throwButton = (Button) findViewById(R.id.throwButton);
         switchButton = (Switch) findViewById(R.id.switch1);
+        showUserName = (Button) findViewById(R.id.showUserNameButton);
 
         throwResult = (TextView) findViewById(R.id.throwResult);
         rollResult = (TextView) findViewById(R.id.rollResult);
         nameResult = (TextView) findViewById(R.id.nameResult);
-        editText = (EditText) findViewById(R.id.editText);
 
         coinImage = (ImageView) findViewById(R.id.coinImage);
         linearLayout = (LinearLayout) findViewById(R.id.main_activity_layout);
 
+        //TODO: Adjust background according to chosen color theme.
+        // String downloadType = sharedpreferences.getString("backgroundColor","Color.WHITE");
+        //linearLayout.setBackgroundColor(Integer.parseInt(downloadType));
+
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
+        showUserName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = editText.getText().toString();
 
-                SharedPreferences.Editor editor = sharedpreferences.edit();
+                SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+                String strUserName = SP.getString("username", "NA");
+                nameResult.setText(strUserName);
 
-                editor.putString(Name, name);
-
-                editor.commit();
-
-                nameResult.setText(name);
-
-                Toast.makeText(MainActivity.this,"Thanks", Toast.LENGTH_LONG).show();
             }
         });
+
+        preferenceButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(MainActivity.this, MyPreferencesActivity.class);
+                startActivity(i);
+
+            }
+        });
+
 
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        //TODO: to be replaced by Preference function, and then switch button deleted.
         switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
