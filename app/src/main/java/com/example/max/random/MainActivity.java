@@ -12,22 +12,16 @@ import android.os.Bundle;
 
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import android.widget.LinearLayout;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button preferenceButton, rollButton, throwButton, showUserName;
+    Button preferenceButton, rollButton, throwButton;
     TextView nameResult, rollResult, throwResult;
-    EditText editText;
     ImageView coinImage;
-    Switch switchButton;
     LinearLayout linearLayout;
 
     public static final String MyPREFERENCES = "MyPreferences";
@@ -42,8 +36,6 @@ public class MainActivity extends AppCompatActivity {
         preferenceButton = (Button) findViewById(R.id.preferenceButton);
         rollButton = (Button) findViewById(R.id.diceButton);
         throwButton = (Button) findViewById(R.id.throwButton);
-        switchButton = (Switch) findViewById(R.id.switch1);
-        showUserName = (Button) findViewById(R.id.showUserNameButton);
 
         throwResult = (TextView) findViewById(R.id.throwResult);
         rollResult = (TextView) findViewById(R.id.rollResult);
@@ -52,33 +44,15 @@ public class MainActivity extends AppCompatActivity {
         coinImage = (ImageView) findViewById(R.id.coinImage);
         linearLayout = (LinearLayout) findViewById(R.id.main_activity_layout);
 
-        //TODO: Adjust background according to chosen color theme.
-        // String downloadType = sharedpreferences.getString("backgroundColor","Color.WHITE");
-        //linearLayout.setBackgroundColor(Integer.parseInt(downloadType));
-
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-        showUserName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-                String strUserName = SP.getString("username", "NA");
-                nameResult.setText(strUserName);
-
-            }
-        });
 
         preferenceButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Intent i = new Intent(MainActivity.this, MyPreferencesActivity.class);
                 startActivity(i);
-
             }
         });
-
 
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,19 +69,32 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        //TODO: to be replaced by Preference function, and then switch button deleted.
-        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+    }
 
-                if (isChecked) {
-                    linearLayout.setBackgroundColor(Color.RED);
+    @Override
+    public void onResume() {
+        super.onResume();
 
-                } else {
-                    linearLayout.setBackgroundColor(Color.BLUE);
-                }
-            }
+        //Username
+        SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        String strUserName = SP.getString("username", "NA");
 
-        });
+        //TODO: add welcoming msg to the SetText.
+        nameResult.setText(strUserName);
+
+        //Background color
+        String backgroundColor = SP.getString("backgroundColor", "NA");
+
+        //TODO: rewrite with switch between cases
+
+        if (backgroundColor.equals("Color.GREEN")) {
+            linearLayout.setBackgroundColor(Color.GREEN);
+        } else if (backgroundColor.equals("Color.GRAY")) {
+            linearLayout.setBackgroundColor(Color.GRAY);
+        } else {
+            linearLayout.setBackgroundColor(Color.WHITE);
+        }
+
     }
 
     //TODO: 1. add a timer to put space between function calls.

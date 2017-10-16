@@ -9,6 +9,6 @@
     <string-array name="listValues">
         <item>Color.GREEN</item>
         <item>Color.WHITE</item>
-        <item>Color.GREY</item>
+        <item>Color.GRAY</item>
     </string-array>
 </resources>
