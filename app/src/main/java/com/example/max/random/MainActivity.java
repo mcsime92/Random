@@ -6,10 +6,19 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
+import android.support.design.widget.NavigationView;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -23,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     TextView nameResult, rollResult, throwResult;
     ImageView coinImage;
     LinearLayout linearLayout;
+
+    DrawerLayout mDrawer;
+    ActionBarDrawerToggle actionBarDrawerToggle;
 
     public static final String MyPREFERENCES = "MyPreferences";
 
@@ -43,6 +55,18 @@ public class MainActivity extends AppCompatActivity {
 
         coinImage = (ImageView) findViewById(R.id.coinImage);
         linearLayout = (LinearLayout) findViewById(R.id.main_activity_layout);
+
+        mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        NavigationView nvDrawer = (NavigationView) findViewById(R.id.nvView);
+        // Setup drawer view
+        setupDrawerContent(nvDrawer);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, mDrawer, toolbar, R.string.drawer_open, R.string.drawer_close);
+
+        mDrawer.addDrawerListener(actionBarDrawerToggle);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
 
@@ -121,4 +145,60 @@ public class MainActivity extends AppCompatActivity {
             coinImage.setImageDrawable(res);
         }
     }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        selectDrawerItem(menuItem);
+                        return true;
+                    }
+                });
+    }
+
+    public void selectDrawerItem(MenuItem menuItem) {
+        // Create a new fragment and specify the fragment to show based on nav item clicked
+        Fragment fragment = null;
+        String title = "";
+        Class fragmentClass;
+
+        switch (menuItem.getItemId()) {
+            case R.id.nav_first_fragment:
+
+                Intent i = new Intent(getApplicationContext(), MyPreferencesActivity.class );
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+
+                //fragmentClass = MainActivity.class;
+                title = getString(R.string.catg_drawer1);
+
+                getSupportActionBar().setTitle(title);
+                break;
+
+            default:
+                //fragmentClass = MainActivity.class;
+                title = getString(R.string.catg_drawer1);
+                getSupportActionBar().setTitle(title);
+        }
+
+        try {
+            //fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // Highlight the selected item has been done by NavigationView
+        menuItem.setChecked(true);
+
+        // Close the navigation drawer
+        mDrawer.closeDrawers();
+    }
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        actionBarDrawerToggle.syncState();
+    }
+
 }

@@ -7,4 +7,11 @@
     <string name="save_button">Save</string>
     <string name="preference_button">Open preferences</string>
     <string name="show_username">show username</string>
+    <string name="preferences">Preferences</string>
+
+    <!-- Drawer -->
+    <string name="drawer_open">drawer open</string>
+    <string name="drawer_close">drawer close</string>
+    <string name="catg_drawer1">Home</string>
+    <string name="catg_drawer2">Settings</string>
 </resources>
