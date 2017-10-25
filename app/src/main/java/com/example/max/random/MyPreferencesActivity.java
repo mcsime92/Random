@@ -1,6 +1,5 @@
 package com.example.max.random;
 
-import android.app.Fragment;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;

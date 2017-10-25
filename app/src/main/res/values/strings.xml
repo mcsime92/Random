@@ -14,4 +14,5 @@
     <string name="drawer_close">drawer close</string>
     <string name="catg_drawer1">Home</string>
     <string name="catg_drawer2">Settings</string>
+    <string name="home">Home</string>
 </resources>

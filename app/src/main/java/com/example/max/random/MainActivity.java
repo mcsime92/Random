@@ -8,8 +8,6 @@ import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -158,20 +156,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectDrawerItem(MenuItem menuItem) {
-        // Create a new fragment and specify the fragment to show based on nav item clicked
-        Fragment fragment = null;
+
         String title = "";
-        Class fragmentClass;
 
         switch (menuItem.getItemId()) {
             case R.id.nav_first_fragment:
 
-                Intent i = new Intent(getApplicationContext(), MyPreferencesActivity.class );
+                Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
 
-                //fragmentClass = MainActivity.class;
                 title = getString(R.string.catg_drawer1);
+
+                getSupportActionBar().setTitle(title);
+                break;
+
+            case R.id.nav_second_fragment:
+
+                Intent j = new Intent(getApplicationContext(), MyPreferencesActivity.class);
+                j.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(j);
+
+                title = getString(R.string.catg_drawer2);
 
                 getSupportActionBar().setTitle(title);
                 break;
@@ -180,12 +186,6 @@ public class MainActivity extends AppCompatActivity {
                 //fragmentClass = MainActivity.class;
                 title = getString(R.string.catg_drawer1);
                 getSupportActionBar().setTitle(title);
-        }
-
-        try {
-            //fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 
         // Highlight the selected item has been done by NavigationView

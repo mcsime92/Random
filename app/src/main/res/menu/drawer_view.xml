@@ -7,12 +7,12 @@
 
         <item
             android:id="@+id/nav_first_fragment"
-            android:title="@string/preferences"
+            android:title="@string/home"
             app:popupTheme="@style/DrawerTheme" />
 
         <item
             android:id="@+id/nav_second_fragment"
-            android:title="placeholder"
+            android:title="@string/preferences"
             app:popupTheme="@style/DrawerTheme" />
 
     </group>
