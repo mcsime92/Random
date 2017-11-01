@@ -26,7 +26,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button preferenceButton, rollButton, throwButton;
+    Button rollButton;
+    Button throwButton;
     TextView nameResult, rollResult, throwResult;
     ImageView coinImage;
     LinearLayout linearLayout;
@@ -43,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        preferenceButton = (Button) findViewById(R.id.preferenceButton);
         rollButton = (Button) findViewById(R.id.diceButton);
         throwButton = (Button) findViewById(R.id.throwButton);
 
@@ -67,14 +67,6 @@ public class MainActivity extends AppCompatActivity {
         mDrawer.addDrawerListener(actionBarDrawerToggle);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-
-        preferenceButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, MyPreferencesActivity.class);
-                startActivity(i);
-            }
-        });
 
         rollButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -161,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
 
         switch (menuItem.getItemId()) {
             case R.id.nav_first_fragment:
-
                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                 i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(i);
@@ -172,7 +163,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.nav_second_fragment:
-
                 Intent j = new Intent(getApplicationContext(), MyPreferencesActivity.class);
                 j.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(j);
@@ -183,7 +173,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             default:
-                //fragmentClass = MainActivity.class;
                 title = getString(R.string.catg_drawer1);
                 getSupportActionBar().setTitle(title);
         }

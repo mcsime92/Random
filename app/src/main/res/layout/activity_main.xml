@@ -22,12 +22,6 @@
             android:background="#2196F4"
             android:minHeight="?attr/actionBarSize"/>
 
-        <!-- Content view where fragments are loaded -->
-        <FrameLayout
-            android:id="@+id/flContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
         <TextView
             android:id="@+id/nameResult"
             android:layout_width="wrap_content"
@@ -35,14 +29,6 @@
             android:layout_gravity="center_horizontal"
             android:textSize="18sp"
             android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/preferenceButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:text="@string/preference_button" />
 
         <Button
             android:id="@+id/diceButton"

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- This DrawerLayout has two children at the root  -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
     <EditTextPreference
         android:key="username"
@@ -18,4 +14,5 @@
         android:key="backgroundColor"
         android:summary="Select the background color of your choice."
         android:title="Theme Color" />
+
 </PreferenceScreen>
