@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     TextView nameResult, rollResult, throwResult;
     ImageView coinImage;
     LinearLayout linearLayout;
+    Toolbar toolbar;
 
     DrawerLayout mDrawer;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -56,8 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Home");
 
         NavigationView nvDrawer = (NavigationView) findViewById(R.id.nvView);
         // Setup drawer view
@@ -92,7 +94,8 @@ public class MainActivity extends AppCompatActivity {
         //Username
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String strUserName = SP.getString("username", "NA");
-
+        toolbar.setTitle("Home");
+        
         //TODO: add welcoming msg to the SetText.
         nameResult.setText(strUserName);
 

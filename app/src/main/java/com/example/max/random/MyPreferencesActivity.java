@@ -3,7 +3,9 @@ package com.example.max.random;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
+import android.support.v4.app.NavUtils;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
@@ -17,6 +19,11 @@ public class MyPreferencesActivity extends PreferenceActivity {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyPreferenceFragment()).commit();
         prepareLayout();
+
+        if(getActionBar()!=null){
+            getActionBar().setDisplayShowHomeEnabled(true);
+            getActionBar().setHomeButtonEnabled(true);
+        }
     }
 
     @Override
@@ -24,6 +31,11 @@ public class MyPreferencesActivity extends PreferenceActivity {
         super.onResume();
         getFragmentManager().beginTransaction().replace(R.id.fragment_container, new MyPreferenceFragment()).commit();
         prepareLayout();
+
+        if(getActionBar()!=null){
+            getActionBar().setDisplayShowHomeEnabled(true);
+            getActionBar().setHomeButtonEnabled(true);
+        }
     }
 
     private void prepareLayout() {
@@ -36,13 +48,21 @@ public class MyPreferencesActivity extends PreferenceActivity {
         root.addView(toolbarContainer);
 
         mToolBar = (Toolbar) toolbarContainer.findViewById(R.id.bar);
-        mToolBar.setTitle(getTitle());
+        mToolBar.setTitle("Settings");
         mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
+    }
+
+    @Override
+    public boolean onMenuItemSelected(int featureId, MenuItem item) {
+        if(item.getItemId()==android.R.id.home){
+            finish();//finish your activity
+        }
+        return super.onMenuItemSelected(featureId, item);
     }
 
     public static class MyPreferenceFragment extends PreferenceFragment {

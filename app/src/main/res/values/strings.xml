@@ -4,10 +4,8 @@
     <string name="dice_button">Roll the dice</string>
     <string name="throw_the_coin">Throw the coin</string>
     <string name="turn_on_dark_theme">Turn on dark theme</string>
-    <string name="save_button">Save</string>
-    <string name="preference_button">Open preferences</string>
     <string name="show_username">show username</string>
-    <string name="preferences">Preferences</string>
+    <string name="preferences">Settings</string>
 
     <!-- Drawer -->
     <string name="drawer_open">drawer open</string>
