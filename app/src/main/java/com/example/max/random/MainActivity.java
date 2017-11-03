@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         String strUserName = SP.getString("username", "NA");
         toolbar.setTitle("Home");
-        
+
         //TODO: add welcoming msg to the SetText.
         nameResult.setText(strUserName);
 
