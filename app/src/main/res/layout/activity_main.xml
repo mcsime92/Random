@@ -19,8 +19,8 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#2196F4"
-            android:minHeight="?attr/actionBarSize"/>
+            android:background="#3da4ab"
+            android:minHeight="?attr/actionBarSize" />
 
         <TextView
             android:id="@+id/nameResult"
@@ -79,4 +79,5 @@
         android:background="@android:color/white"
         app:headerLayout="@layout/navigation_drawer_header"
         app:menu="@menu/drawer_view" />
+
 </android.support.v4.widget.DrawerLayout>

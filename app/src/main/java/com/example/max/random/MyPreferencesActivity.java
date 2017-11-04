@@ -33,7 +33,7 @@ public class MyPreferencesActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                Toast.makeText(getApplicationContext(),"your icon was clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "your icon was clicked", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -54,7 +54,7 @@ public class MyPreferencesActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"your icon was clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "your icon was clicked", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -79,7 +79,7 @@ public class MyPreferencesActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"your icon was clicked",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "your icon was clicked", Toast.LENGTH_SHORT).show();
                 finish();
             }
         });

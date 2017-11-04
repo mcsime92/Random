@@ -4,7 +4,7 @@
     android:id="@+id/bar"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
-    android:background="@color/colorPrimary"
+    android:background="#3da4ab"
     android:clickable="true">
 
     <RelativeLayout
@@ -19,8 +19,7 @@
             android:layout_centerVertical="true"
             android:contentDescription="@string/image"
             android:src="@drawable/ic_arrow_back_black_24dp"
-            android:background="?android:attr/selectableItemBackground"
-            />
+            android:background="?android:attr/selectableItemBackground"/>
 
         <TextView
             android:id="@+id/title"
