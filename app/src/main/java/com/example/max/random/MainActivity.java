@@ -82,9 +82,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 throwCoin(v);
             }
-
         });
-
     }
 
     @Override
@@ -147,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         selectDrawerItem(menuItem);
-                        return true;
+                        return false;
                     }
                 });
     }
@@ -172,18 +170,12 @@ public class MainActivity extends AppCompatActivity {
                 j.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(j);
 
-                title = getString(R.string.catg_drawer2);
-
-                getSupportActionBar().setTitle(title);
                 break;
 
             default:
                 title = getString(R.string.catg_drawer1);
                 getSupportActionBar().setTitle(title);
         }
-
-        // Highlight the selected item has been done by NavigationView
-        menuItem.setChecked(true);
 
         // Close the navigation drawer
         mDrawer.closeDrawers();
@@ -194,5 +186,4 @@ public class MainActivity extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         actionBarDrawerToggle.syncState();
     }
-
 }

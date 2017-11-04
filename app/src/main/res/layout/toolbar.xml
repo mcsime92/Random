@@ -18,7 +18,9 @@
             android:clickable="true"
             android:layout_centerVertical="true"
             android:contentDescription="@string/image"
-            android:src="@drawable/ic_arrow_back_black_24dp" />
+            android:src="@drawable/ic_arrow_back_black_24dp"
+            android:background="?android:attr/selectableItemBackground"
+            />
 
         <TextView
             android:id="@+id/title"
