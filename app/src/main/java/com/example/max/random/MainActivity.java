@@ -102,14 +102,16 @@ public class MainActivity extends AppCompatActivity {
         //Background color
         String backgroundColor = SP.getString("backgroundColor", "NA");
 
-        //TODO: rewrite with switch between cases
-
-        if (backgroundColor.equals("Color.GREEN")) {
-            linearLayout.setBackgroundColor(Color.GREEN);
-        } else if (backgroundColor.equals("Color.GRAY")) {
-            linearLayout.setBackgroundColor(Color.GRAY);
-        } else {
-            linearLayout.setBackgroundColor(Color.WHITE);
+        switch (backgroundColor) {
+            case "Color.GREEN":
+                linearLayout.setBackgroundColor(Color.GREEN);
+                break;
+            case "Color.GRAY":
+                linearLayout.setBackgroundColor(Color.GRAY);
+                break;
+            default:
+                linearLayout.setBackgroundColor(Color.WHITE);
+                break;
         }
 
     }

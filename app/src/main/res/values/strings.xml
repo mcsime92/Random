@@ -13,4 +13,6 @@
     <string name="catg_drawer1">Home</string>
     <string name="catg_drawer2">Settings</string>
     <string name="home">Home</string>
+    <string name="image">Image</string>
+    <string name="settings">Settings</string>
 </resources>
