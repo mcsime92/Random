@@ -85,8 +85,6 @@ public class MyPreferencesActivity extends AppCompatActivity {
         });
     }
 
-    //TODO: Create back arrow functionality.
-
     public static class MyPreferenceFragment extends PreferenceFragment {
         @Override
         public void onCreate(final Bundle savedInstanceState) {

@@ -95,8 +95,10 @@ public class MainActivity extends AppCompatActivity {
         toolbar.setTitle("Home");
 
         //TODO: add welcoming msg to the SetText.
-        nameResult.setText(strUserName);
+        nameResult.setText(getString(R.string.welcome_message, strUserName));
 
+
+        //TODO: add other colors, non-primary ones.
         //Background color
         String backgroundColor = SP.getString("backgroundColor", "NA");
 

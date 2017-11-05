@@ -6,6 +6,7 @@
     <string name="turn_on_dark_theme">Turn on dark theme</string>
     <string name="show_username">show username</string>
     <string name="preferences">Settings</string>
+    <string name="welcome_message">Welcome back %1$s !</string>
 
     <!-- Drawer -->
     <string name="drawer_open">drawer open</string>
