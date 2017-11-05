@@ -94,26 +94,22 @@ public class MainActivity extends AppCompatActivity {
         String strUserName = SP.getString("username", "NA");
         toolbar.setTitle("Home");
 
-        //TODO: add welcoming msg to the SetText.
         nameResult.setText(getString(R.string.welcome_message, strUserName));
 
-
-        //TODO: add other colors, non-primary ones.
         //Background color
         String backgroundColor = SP.getString("backgroundColor", "NA");
 
         switch (backgroundColor) {
-            case "Color.GREEN":
-                linearLayout.setBackgroundColor(Color.GREEN);
+            case "Color.LINEN":
+                linearLayout.setBackgroundColor((ContextCompat.getColor(this, R.color.linen)));
                 break;
-            case "Color.GRAY":
-                linearLayout.setBackgroundColor(Color.GRAY);
+            case "Color.CYAN":
+                linearLayout.setBackgroundColor((ContextCompat.getColor(this, R.color.cyan)));
                 break;
             default:
                 linearLayout.setBackgroundColor(Color.WHITE);
                 break;
         }
-
     }
 
     //TODO: 1. add a timer to put space between function calls.

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="listArray">
-        <item>Green</item>
+        <item>Linen</item>
         <item>White</item>
-        <item>Grey</item>
+        <item>Cyan</item>
     </string-array>
 
     <string-array name="listValues">
-        <item>Color.GREEN</item>
+        <item>Color.LINEN</item>
         <item>Color.WHITE</item>
-        <item>Color.GRAY</item>
+        <item>Color.CYAN</item>
     </string-array>
 </resources>
