@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:sample="http://schemas.android.com/apk/res-auto">>
+
+    <com.pavelsikun.seekbarpreference.SeekBarPreference
+        android:defaultValue="50"
+        android:enabled="true"
+        android:key="your_pref_key"
+        android:summary="Slide to adjust the brightness"
+        android:title="Brightness level"
+
+        sample:msbp_dialogEnabled="false"
+        sample:msbp_interval="10"
+        sample:msbp_maxValue="100"
+        sample:msbp_measurementUnit="%"
+        sample:msbp_minValue="0" />
 
     <EditTextPreference
         android:key="username"
+        android:enabled="true"
         android:summary="Please provide your username"
         android:title="Your Name" />
 
@@ -14,5 +29,7 @@
         android:key="backgroundColor"
         android:summary="Select the background color of your choice."
         android:title="Theme Color" />
+
+
 
 </PreferenceScreen>

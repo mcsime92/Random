@@ -1,28 +1,29 @@
 package com.example.max.random;
 
+//Brightness thanks to https://github.com/MrBIMC/MaterialSeekBarPreference/blob/master/sample/src/main/java/com/pavelsikun/seekbarpreference/sample/ExampleViewActivity.java
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.NavigationView;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
-
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Username
         SharedPreferences SP = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        String strUserName = SP.getString("username", "NA");
+        String strUserName = SP.getString("username", "Stranger");
         toolbar.setTitle("Home");
 
         nameResult.setText(getString(R.string.welcome_message, strUserName));
@@ -110,10 +111,24 @@ public class MainActivity extends AppCompatActivity {
                 linearLayout.setBackgroundColor(Color.WHITE);
                 break;
         }
+
+        //Brightness from 0-100. Divide by 1000 to set on scale of 0.0 to 1.0 for screenBrightness
+        double brightnessLevel = (SP.getInt("your_pref_key", 0));
+
+        double brightnessLevelRescaled = brightnessLevel/100;
+
+        WindowManager.LayoutParams lp = getWindow().getAttributes();
+
+        //Brightness between 0.0f and 1.0f
+        lp.screenBrightness = Float.parseFloat(brightnessLevelRescaled + "f");
+
+        getWindow().setAttributes(lp);
     }
 
-    //TODO: 1. add a timer to put space between function calls.
-    //TODO: 2. add visuals of dice or coin spinning.
+
+    //TODO (1) add a timer to put space between function calls.
+    //TODO (2) add visuals of dice or coin spinning.
+    //TODO (3) add sharedpreferences acting on the brightness within the app.
 
     public void rollDice(View v) {
 
