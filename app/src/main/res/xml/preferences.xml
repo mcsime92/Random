@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:sample="http://schemas.android.com/apk/res-auto">>
+    xmlns:sample="http://schemas.android.com/apk/res-auto">
+
+    <EditTextPreference
+        android:enabled="true"
+        android:key="username"
+        android:summary="Please provide your username"
+        android:title="Your Name" />
+
+    <ListPreference
+        android:defaultValue="2"
+        android:entries="@array/listArray"
+        android:entryValues="@array/listValues"
+        android:key="backgroundColor"
+        android:summary="Select the background color of your choice."
+        android:title="Theme Color" />
 
     <com.pavelsikun.seekbarpreference.SeekBarPreference
         android:defaultValue="50"
@@ -15,21 +29,5 @@
         sample:msbp_maxValue="100"
         sample:msbp_measurementUnit="%"
         sample:msbp_minValue="0" />
-
-    <EditTextPreference
-        android:key="username"
-        android:enabled="true"
-        android:summary="Please provide your username"
-        android:title="Your Name" />
-
-    <ListPreference
-        android:defaultValue="2"
-        android:entries="@array/listArray"
-        android:entryValues="@array/listValues"
-        android:key="backgroundColor"
-        android:summary="Select the background color of your choice."
-        android:title="Theme Color" />
-
-
 
 </PreferenceScreen>
