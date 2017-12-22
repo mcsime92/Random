@@ -36,6 +36,7 @@ public class MyPreferencesActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "your icon was clicked", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override
@@ -84,6 +85,7 @@ public class MyPreferencesActivity extends AppCompatActivity {
             }
         });
     }
+
 
     public static class MyPreferenceFragment extends PreferenceFragment {
         @Override
